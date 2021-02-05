@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>𝐃𝐀𝐕𝐈𝐂𝐇𝐈 𝐋𝐨𝐠𝐢𝐧</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+</head>
+<link rel="stylesheet" href="css.css">
+<body class="container">
+	<div class="imgcontainer">
+		<img src="https://mblogthumb-phinf.pstatic.net/MjAyMDA5MjJfMjc0/MDAxNjAwNzA4OTYwMzg2.jK8C0Btv-ZkrxFtRKOnE19ff0akH0jWXdPN7uxn8Buwg.KjvoHoVVwcE3Dhmeqi3x8sn74MaZgGQIBD6V6ca_Gq4g.JPEG.aube_blue/오리.jpg?type=w800" alt="Avatar" class="avatar" style="width: 100px;">
+	  </div>
+	  <center><p>𝐋𝐨𝐠𝐢𝐧 𝐭𝐨 𝐃𝐮𝐜𝐤🦆</p></center>
+	<form action="" method="post" name="form1" onSubmit="JavaScript:return fSubmit();" >
+	<h1>Username</h1> <input name="Username" type="text"><br>
+	<h1>password </h1><input name="password" type="text"><br>
+	<div><center><button  type="submit" style="background-color:#48ACDA;width: 30%;"><h1>Login</h1></button>
+	<button type="submit" style="background-color:#48ACDA;width: 30%;" ><h1>Register</h1></button></center></div>
+	</form>
+	
+</body>
+<script type="text/javascript">
+	function fSubmit()
+	{
+		if(document.form1.Username.value == "")
+		{
+			swal({
+                title: "Error!!",
+                text: "Please enter username 🤬",
+                icon: "error",
+});
+			document.form1.Username.focus();
+			return false;
+		}	
+		if(document.form1.password.value == "")
+		{
+			swal({
+  title: "Error!!",
+  text: "Please enter Password 🤬",
+  icon: "error",
+});
+			document.form1.password.focus();		
+			return false;
+		}	
+		document.form1.submit();
+	}
+	</script>
+</html>
