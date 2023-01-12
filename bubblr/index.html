@@ -1,36 +1,32 @@
-<!-- Register Form -->
-<form id="register-form">
-    <label for="email">Email:</label>
-    <input type="email" id="email">
-    <label for="password">Password:</label>
-    <input type="password" id="password">
-    <button id="register-button">Register</button>
-  </form>
-  
-  <!-- Display error message -->
-  <p id="error-message"></p>
-  
-  <!-- Add Firebase library -->
-  <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-  <script type="text/javascript" src="bubblr/connect.js"></script>
-  <script tpye="text/javascript" src="bubblr/register"></script>
-
-  <script>// Get form elements
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    var registerButton = document.getElementById("register-button");
-    var errorMessage = document.getElementById("error-message");
-    
-    // Add event listener to register button
-    registerButton.addEventListener("click", function(e) {
-      e.preventDefault();
-    
-      // Get email and password values
-      var emailValue = email.value;
-      var passwordValue = password.value;
-    
-      // Create a new user with email and password
-      firebase.auth().createUserWith
-    </script>
+<body>
+  <div id="nav-menu">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#setting">Setting</a></li>
+    </ul>
+  </div>
+  <button id="nav-toggle">Toggle navigation</button>
+  
+  <script>
+  $(document).ready(function() {
+    $("#nav-menu").hide();
+  
+    $("#nav-toggle").click(function() {
+      $("#nav-menu").slideToggle();
+    });
+  });
+  
+  </script>
+  
+</body>
+</html>
