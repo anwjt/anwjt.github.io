@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+import { Form, FormControl, FormGroup, Button } from 'react-bootstrap';
 
-<body>
-  <div id="nav-menu">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#setting">Setting</a></li>
-    </ul>
-  </div>
-  <button id="nav-toggle">Toggle navigation</button>
-  
-  <script>
-  $(document).ready(function() {
-    $("#nav-menu").hide();
-  
-    $("#nav-toggle").click(function() {
-      $("#nav-menu").slideToggle();
-    });
-  });
-  
-  </script>
-  
-</body>
-</html>
+const FeedPage = () => {
+    const [posts, setPosts] = useState([]);
+    const [newPost, setNewPost] = useState('');
+    const [location, setLocation] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // Add new post and location to the list of posts
+        setPosts([...posts, { post: newPost, location }]);
+        setNewPost('');
+        setLocation('');
+    }
+
+    return (
+        <Container>
+            <Row>
+                <Col>
+                    <h1>Feed</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Write a post" value={newPost} onChange={(event) => setNewPost(event.target.value)} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control type="text" placeholder="Enter location" value={location} onChange={(event) => setLocation(event.target.value)} />
+                        </Form.Group>
+                        <Button type="submit">Post</Button>
+                    </Form>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    { posts.map((post, index) => (
+                        <div key={index}>
+                
