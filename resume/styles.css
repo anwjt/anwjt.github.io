@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif; /* Add the font-family declaration */
 }
 
 .section {
@@ -9,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
+  background: linear-gradient(45deg, #2b2e3b, #191c24, #0d0e11);
   background-size: 600% 600%;
   animation: gradientAnimation 10s ease infinite;
 }
