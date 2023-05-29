@@ -1,225 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-  <style>
-    /* Global styles */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-      overflow: hidden;
-      background: linear-gradient(45deg, #A569BD, #154360, #0B5345 , #2E4053 , #F1948A);
-      background-size: 400% 400%;
-      animation: gradientAnimation 8s ease infinite;
-    }
-
-    @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      overflow: hidden;
-      perspective: 1000px;
-      margin-top: 0;
-    }
-
-    .content-container {
-      max-width: 1200px;
-      padding: 5% 10%;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    h1 {
-      font-size: 5vw;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 2vw;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 3vw;
-      margin-bottom: 15px;
-    }
-
-    nav {
-      position: fixed;
-      top: 2%;
-      left: 2%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 2;
-    }
-
-    .nav-link {
-      background-color: transparent;
-      color: #fff;
-      border: none;
-      font-size: 1.5vw;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .dot-indicators {
-      position: fixed;
-      top: 50%;
-      right: 2%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 2;
-    }
-
-    .dot-indicator {
-      width: 10px;
-      height: 10px;
-      background-color: #fff;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .dot-indicator.active {
-      background-color: #000;
-    }
-
-    .content-left {
-      flex: 1;
-      text-align: center;
-    }
-
-    .content-right {
-      flex: 1;
-      display: none;
-    }
-
-    /* Media queries */
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 3.5vw;
-      }
-
-      h2 {
-        font-size: 1.5vw;
-      }
-
-      p {
-        font-size: 2.5vw;
-      }
-
-      .content-container {
-        flex-direction: row;
-        text-align: left;
-      }
-
-      .content-right {
-        display: block;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+  <section id="home" class="section">
+    <h1>Welcome to My Personal Website</h1>
+  </section>
+
+  <section id="resume" class="section">
+    <h1>Resume</h1>
+  </section>
+
+  <section id="portfolio" class="section">
+    <h1>Portfolio</h1>
+  </section>
+
   <nav>
-    <button class="nav-link" onclick="scrollToSection('home')">FOLIO</button>
-    <button class="nav-link" onclick="scrollToSection('home')">Home</button>
-    <button class="nav-link" onclick="scrollToSection('about')">About</button>
-    <button class="nav-link" onclick="scrollToSection('portfolio')">Portfolio</button>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+    </ul>
   </nav>
 
-  <div class="dot-indicators">
-    <div class="dot-indicator active" onclick="scrollToSection('home')"></div>
-    <div class="dot-indicator" onclick="scrollToSection('about')"></div>
-    <div class="dot-indicator" onclick="scrollToSection('portfolio')"></div>
-  </div>
-
-  <section id="home">
-    <div class="content-container">
-      <div class="content-left">
-        <h2>HELLO___</h2>
-        <h1>I'm<span class="typed-container"><span id="typed"></span></span></h1>
-      </div>
-      <div class="content-right">
-        <img src="https://sv1.picz.in.th/images/2023/05/29/F6q2eV.png" alt="Illustration">
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="content-container">
-      <h1>About</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor auctor metus, vel molestie erat posuere sed.</p>
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <div class="content-container">
-      <h1>Portfolio</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor auctor metus, vel molestie erat posuere sed.</p>
-    </div>
-  </section>
-
-  <script>
-    function scrollToSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: 'smooth'
-      });
-    }
-
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
-      const dotIndicators = document.querySelectorAll('.dot-indicator');
-
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const midpoint = rect.top + rect.height / 2;
-
-        if (midpoint >= 0 && midpoint <= window.innerHeight) {
-          dotIndicators.forEach(dot => dot.classList.remove('active'));
-          dotIndicators[index].classList.add('active');
-        }
-      });
-    });
-
-    // Typed.js configuration
-    const typed = new Typed('#typed', {
-      strings: ['Graphic', 'VideoEditor', 'Cameraman'],
-      typeSpeed: 100,
-      backSpeed: 80,
-      backDelay: 1500,
-      loop: true
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
