@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  font-family: 'Roboto', sans-serif; /* Add the font-family declaration */
+  font-family: 'Roboto', sans-serif;
 }
 
 .section {
@@ -10,10 +10,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, 
-  #581845, #191c24,#C70039,#9B59B6);
+  background: linear-gradient(45deg, #2b2e3b, #191c24, #0d0e11);
   background-size: 600% 600%;
-  animation: gradientAnimation 5s ease infinite;
+  animation: gradientAnimation 10s ease infinite;
 }
 
 @keyframes gradientAnimation {
@@ -33,7 +32,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent;
   z-index: 1;
 }
 
