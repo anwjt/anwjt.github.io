@@ -70,7 +70,6 @@
       margin-bottom: 15px;
     }
 
- 
     nav {
       position: fixed;
       top: 20px;
@@ -112,15 +111,22 @@
     .dot-indicator.active {
       background-color: #000;
     }
+
     .illustration {
       width: 100%;
       max-width: 800px;
       height: auto;
-      position: fixed ;
+      position: relative;
+      right: 0;
       top: 50%;
- 
+      transform: translateY(-50%);
     }
+
     .content-left {
+      flex: 1;
+    }
+
+    .content-right {
       flex: 1;
     }
 
@@ -153,9 +159,8 @@
         <h1>I'm<span class="typed-container"><span id="typed"></span></span></h1>
         
       </div>
-      <img src="https://sv1.picz.in.th/images/2023/05/29/F6q2eV.png" class="illustration">
       <div class="content-right">
-       
+        <img src="https://sv1.picz.in.th/images/2023/05/29/F6q2eV.png" class="illustration">
       </div>
     </div>
   </section>
