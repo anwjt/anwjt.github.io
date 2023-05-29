@@ -55,3 +55,15 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
 }
+
+.container {
+  text-align: center; /* Center align text */
+}
+
+h1.display-1 {
+  font-size: 4rem; /* Increase font size */
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
