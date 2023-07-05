@@ -15,4 +15,33 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    // Function to check if an element is in the viewport
+    function isElementInViewport(element) {
+      var rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    // Function to handle the scroll event
+    function handleScroll() {
+      var fadeElements = document.querySelectorAll('.fade-in');
+    
+      for (var i = 0; i < fadeElements.length; i++) {
+        if (isElementInViewport(fadeElements[i])) {
+          fadeElements[i].classList.add('show');
+        }
+      }
+    }
+  
+    // Initial check on page load
+    handleScroll();
+  
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+  });
   
