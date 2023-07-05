@@ -1,8 +1,22 @@
-/* Reset some default styles */
-body, h1, h2, p {
+body {
+    overflow: hidden;
+  }
+  
+  html,
+  body,
+  main {
+    height: 100%;
     margin: 0;
     padding: 0;
   }
+  
+  section {
+    height: 100vh;
+    scroll-snap-align: start;
+  }
+  
+  /* Add more styles as per your design preferences */
+  
   
   /* Set up the navigation */
   nav ul {
@@ -43,5 +57,21 @@ body, h1, h2, p {
   
   .fade-in.show {
     opacity: 1;
+  }
+  #arrow-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  #arrow-button i {
+    transform: rotate(90deg);
   }
   
