@@ -1,42 +1,110 @@
+.flat-button {
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Add transition for smooth effect */
+}
+
+.flat-button:hover {
+  background-color: pink; /* Change background color to pink on hover */
+}
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  padding-top: 70px; /* Add space for the fixed navbar */
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #f1f1f1;
+  padding: 20px;
 }
 
-.navbar {
-    background-color: #f1f1f1;
-    padding: 10px;
+#content {
+  margin-left: 220px;
+  padding: 20px;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+/* Add styles for the navigation links */
+#sidebar a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
 }
 
-.navbar li {
-    display: inline-block;
-    margin-right: 10px;
+#sidebar a:hover {
+  color: #000;
+  background-color: #f8f8f8;
+  font-weight: bold;
 }
 
-.navbar li a {
-    color: #333;
-    text-decoration: none;
-    padding: 5px;
+.logo {
+  font-size: 34px;
+  font-weight: bold;
 }
 
-.section {
-    margin-bottom: 20px;
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: 80%;
+  margin: 0 auto;
+}
+.typed-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 3px;
+  animation: typing 3s steps(40, end);
+ 
+  
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+h1{
+  font-size: 50px;
+  color: pink;
+  font-weight: bold;
 }
