@@ -1,77 +1,42 @@
 body {
-    overflow: hidden;
-  }
-  
-  html,
-  body,
-  main {
-    height: 100%;
     margin: 0;
     padding: 0;
-  }
-  
-  section {
-    height: 100vh;
-    scroll-snap-align: start;
-  }
-  
-  /* Add more styles as per your design preferences */
-  
-  
-  /* Set up the navigation */
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-  }
-  
-  nav ul li {
-    margin: 10px;
-  }
-  
-  nav ul li a {
-    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: #333;
     text-decoration: none;
-    padding: 10px;
-  }
-  
-  /* Style the hero section */
-  #hero {
-    text-align: center;
-    background-color: #f2f2f2;
-    padding: 50px;
-  }
-  
-  /* Style the other sections */
-  section {
-    padding: 50px;
-  }
-  
-  /* Add more styles as per your preference */
-  
-  .fade-in {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .fade-in.show {
-    opacity: 1;
-  }
-  #arrow-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
+    padding: 5px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
     font-size: 24px;
-    cursor: pointer;
-  }
-  
-  #arrow-button i {
-    transform: rotate(90deg);
-  }
-  
+    margin-bottom: 10px;
+}
