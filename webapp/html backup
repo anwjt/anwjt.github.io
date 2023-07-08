@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="navbar" id="navbar">
+    <a href="#home"><img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png" alt="Home"></a>
+    <a href="#about"><img src="https://cdn-icons-png.flaticon.com/512/9356/9356762.png" alt="About"></a>
+    <a href="#services"><img src="https://cdn-icons-png.flaticon.com/512/2956/2956788.png" alt="Services"></a>
+    <a href="#contact"><img src="https://cdn-icons-png.flaticon.com/512/9222/9222337.png" alt="Contact"></a>
+  </div>
+
+  <div class="content">
+    <!-- Your page content goes here -->
+    <h1>Welcome to the Social Web App!</h1>
+    <div class="post-section">
+      <textarea id="post-text" placeholder="Write something..."></textarea>
+      <button id="post-button">Post</button>
+    </div>
+    <div id="post-details">
+      <!-- Dynamic content to be pulled from the database will be displayed here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
