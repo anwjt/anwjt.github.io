@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="app.js" defer></script>
+    <title>Your Portfolio</title>
+    <script defer>
+        function loadContent(page) {
+            Promise.all([
+                fetch(`${page}.html`).then(response => response.text()),
+                fetch(`${page}.css`).then(response => response.text())
+            ])
+            .then(([html, css]) => {
+                document.getElementById('content').innerHTML = html;
+                injectStyles(css);
+            })
+            .catch(error => console.error('Error loading content:', error));
+        }
+
+        function injectStyles(css) {
+            const styleElement = document.createElement('style');
+            styleElement.innerHTML = css;
+            document.head.appendChild(styleElement);
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div class="typed-text"></div>
+        <div class="buttons">
+            <button onclick="loadContent('about')">About</button>
+            <button onclick="loadContent('works')">Works</button>
+            <button onclick="loadContent('contact')">Contact</button>
+        </div>
+        <div id="content">
+            <!-- Content will be dynamically loaded here -->
+        </div>
+    </div>
+</body>
+</html>
