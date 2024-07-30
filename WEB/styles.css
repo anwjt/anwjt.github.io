@@ -48,6 +48,7 @@ body {
     margin-top: 20px; /* Space between text and buttons */
     display: flex; /* Arrange buttons in a row */
     gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
 }
 
 .btn-hover {
@@ -145,4 +146,34 @@ body::-webkit-scrollbar {
 body {
     -ms-overflow-style: none;  /* Internet Explorer and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        justify-content: center; /* Center content on smaller screens */
+        padding-left: 5%; /* Adjust padding for smaller screens */
+    }
+
+    .static-text,
+    #typed-text {
+        font-size: 2rem; /* Reduce font size on smaller screens */
+    }
+
+    .description-text {
+        font-size: 1rem; /* Adjust font size for description on smaller screens */
+    }
+
+    .buttons {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center buttons */
+        gap: 10px; /* Space between buttons */
+    }
+
+    .btn-hover {
+        width: 100%; /* Make buttons full width on smaller screens */
+        height: 50px; /* Adjust button height for smaller screens */
+        font-size: 14px; /* Adjust font size for buttons on smaller screens */
+        margin: 10px 0; /* Adjust margin for buttons on smaller screens */
+    }
 }
