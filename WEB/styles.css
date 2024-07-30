@@ -177,3 +177,41 @@ body {
         margin: 10px 0; /* Adjust margin for buttons on smaller screens */
     }
 }
+
+/* Profile Page Styles */
+
+.profile-header {
+    text-align: center;
+    color: pink;
+    margin-top: 20px;
+}
+
+.profile-subheader {
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+.card {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    color: black;
+}
+
+.card h3 {
+    text-align: center;
+    color: pink;
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
