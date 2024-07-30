@@ -33,3 +33,10 @@
     margin: 10px 0;
     line-height: 1.5;
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .about-myself {
+        width: 90%;
+    }
+}
