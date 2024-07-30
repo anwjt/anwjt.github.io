@@ -1,0 +1,35 @@
+/* Profile page styles */
+.profile-header {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: pink;
+}
+
+.profile-subheader {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.about-myself {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 500px;
+}
+
+.about-myself h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: pink;
+}
+
+.about-myself p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
