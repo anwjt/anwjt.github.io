@@ -1,7 +1,7 @@
 // Initialize Typed.js
 document.addEventListener("DOMContentLoaded", function() {
     var options = {
-        strings: ["Web Developer", "Graphic Designer", "Content Creator"],
+        strings: ["a Web Developer", "a Graphic Designer", "a Content Creator"],
         typeSpeed: 50,
         backSpeed: 25,
         backDelay: 1000,
