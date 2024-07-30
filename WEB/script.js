@@ -14,26 +14,26 @@ document.addEventListener("DOMContentLoaded", function() {
     // Button click events for SPA navigation
     document.querySelector(".btn-hover.color-1").addEventListener("click", function() {
         document.querySelector("#home-page").classList.add("hidden");
-        document.querySelector("#profile-page").classList.remove("hidden");
-        document.querySelector("#profile-page").classList.add("active");
-    });
-
-    document.querySelector(".btn-hover.color-2").addEventListener("click", function() {
-        document.querySelector("#home-page").classList.add("hidden");
         document.querySelector("#work-page").classList.remove("hidden");
         document.querySelector("#work-page").classList.add("active");
     });
 
-    document.querySelector(".btn-hover.color-3").addEventListener("click", function() {
+    document.querySelector(".btn-hover.color-2").addEventListener("click", function() {
         document.querySelector("#home-page").classList.add("hidden");
         document.querySelector("#tiktok-page").classList.remove("hidden");
         document.querySelector("#tiktok-page").classList.add("active");
     });
 
+    document.querySelector(".btn-hover.color-3").addEventListener("click", function() {
+        document.querySelector("#home-page").classList.add("hidden");
+        document.querySelector("#contact-page").classList.remove("hidden");
+        document.querySelector("#contact-page").classList.add("active");
+    });
+
     document.querySelector("#home-button").addEventListener("click", function() {
-        document.querySelector("#profile-page").classList.add("hidden");
         document.querySelector("#work-page").classList.add("hidden");
         document.querySelector("#tiktok-page").classList.add("hidden");
+        document.querySelector("#contact-page").classList.add("hidden");
         document.querySelector("#home-page").classList.remove("hidden");
         document.querySelector("#home-page").classList.add("active");
     });
