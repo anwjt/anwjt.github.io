@@ -1,54 +1,48 @@
-/* Set background color and text color */
+/* Global styles */
 body {
     background-color: black;
     color: pink;
+    font-family: Arial, sans-serif;
 }
 
 .hero-section {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
+    justify-content: flex-start;
     background-color: black;
-    padding-left: 20%; /* Adjust the padding to move text from the left edge */
+    padding-left: 20%;
 }
 
 .text-container {
-    text-align: left; /* Ensure the text and button are aligned to the left */
+    text-align: left;
 }
 
 .static-text {
-    color: white; /* Set color for static text */
+    color: white;
     font-size: 2.5rem;
     font-family: "Bree Serif", serif;
     font-weight: 400;
-    font-style: normal;
 }
 
 #typed-text {
-    color: yellow; /* Set color for typed text */
+    color: yellow;
     font-size: 2.5rem;
 }
 
-/* Bree Serif font for typed text */
 .bree-serif-regular {
     font-family: 'Bree Serif', serif;
     font-weight: 400;
-    font-style: normal;
 }
 
-/* Global box-sizing for all elements */
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 .buttons {
-    margin-top: 20px; /* Space between text and buttons */
-    display: flex; /* Arrange buttons in a row */
-    gap: 10px; /* Space between buttons */
-    flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .btn-hover {
@@ -63,9 +57,6 @@ body {
     border: none;
     background-size: 300% 100%;
     border-radius: 50px;
-    -moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
 
@@ -79,38 +70,37 @@ body {
 
 .btn-hover.color-1 {
     background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
-    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    box-shadow: 0 4px 15px rgba(49, 196, 190, 0.75);
 }
 
 .btn-hover.color-2 {
     background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
-    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+    box-shadow: 0 4px 15px rgba(116, 79, 168, 0.75);
 }
 
 .btn-hover.color-3 {
     background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
-    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+    box-shadow: 0 4px 15px rgba(126, 52, 161, 0.75);
 }
 
 .description-text {
-    margin-top: 20px; /* Space between buttons and description */
-    color: white; /* Text color for the description */
-    font-size: 1.2rem; /* Adjust font size as needed */
+    margin-top: 20px;
+    color: white;
+    font-size: 1.2rem;
     font-family: "Bree Serif", serif;
     font-weight: 400;
-    font-style: normal;
 }
 
 .description-text .highlight {
-    color: pink; /* Text color for Anuwat */
-    font-weight: bold; /* Bold text for Anuwat */
+    color: pink;
+    font-weight: bold;
     text-decoration-line: underline;
 }
 
-/* General styles for SPA pages */
+/* SPA page styles */
 .spa-page {
-    display: none; /* Hide SPA pages by default */
-    transition: opacity 0.5s ease-in-out; /* Smooth fade effect */
+    display: none;
+    transition: opacity 0.5s ease-in-out;
     opacity: 0;
 }
 
@@ -123,63 +113,30 @@ body {
     opacity: 0;
 }
 
-/* Centered Home button at the top of SPA pages */
 .home-button {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000; /* Ensure it is above other content */
+    z-index: 1000;
 }
 
-/* Centered content in SPA pages */
 .spa-page .content {
     text-align: center;
-    padding-top: 60px; /* Adjust padding to avoid overlap with the Home button */
+    padding-top: 60px;
 }
 
 /* Hide right scrollbar */
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
+    display: none;
 }
 
 body {
-    -ms-overflow-style: none;  /* Internet Explorer and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-    .hero-section {
-        justify-content: center; /* Center content on smaller screens */
-        padding-left: 5%; /* Adjust padding for smaller screens */
-    }
-
-    .static-text,
-    #typed-text {
-        font-size: 2rem; /* Reduce font size on smaller screens */
-    }
-
-    .description-text {
-        font-size: 1rem; /* Adjust font size for description on smaller screens */
-    }
-
-    .buttons {
-        flex-direction: column; /* Stack buttons vertically on smaller screens */
-        align-items: center; /* Center buttons */
-        gap: 10px; /* Space between buttons */
-    }
-
-    .btn-hover {
-        width: 100%; /* Make buttons full width on smaller screens */
-        height: 50px; /* Adjust button height for smaller screens */
-        font-size: 14px; /* Adjust font size for buttons on smaller screens */
-        margin: 10px 0; /* Adjust margin for buttons on smaller screens */
-    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Profile Page Styles */
-
 .profile-header {
     text-align: center;
     color: pink;
@@ -214,4 +171,19 @@ body {
 .card p {
     margin: 10px 0;
     font-size: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .profile-header, .profile-subheader {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+    
+    .card p {
+        font-size: 14px;
+    }
 }
