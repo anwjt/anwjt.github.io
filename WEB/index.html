@@ -3,21 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi There 👋</title>
-    <link rel="icon" type="image/x-icon" href="images/cute.png">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <title>Home</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Container for SPA content -->
-    <div id="spa-content">
-        <?php include 'spa/home.html'; ?>
+    <div id="home-page" class="spa-page active">
+        <div class="hero-section">
+            <div class="text-container">
+                <span class="static-text">I’m</span>
+                <span id="typed-text" class="bree-serif-regular"></span>
+                <div class="description-text">
+                   You can call me <span class="highlight">Anuwat</span>. I'm a Content Creator and Graphics Designer, but Coding a little bit.
+                </div>
+                <div class="buttons">
+                    <button class="btn-hover color-1" data-target="work-page">Work</button>
+                    <button class="btn-hover color-2" data-target="tiktok-page">Tiktok</button>
+                    <button class="btn-hover color-3" data-target="contact-page">Contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="work-page" class="spa-page">
+        <button id="home-button" class="btn-hover color-1 home-button">Home</button>
+        <div class="content">
+            <!-- Work page content here -->
+        </div>
+    </div>
+
+    <div id="tiktok-page" class="spa-page">
+        <button id="home-button" class="btn-hover color-1 home-button">Home</button>
+        <div class="content">
+            <!-- Tiktok page content here -->
+        </div>
+    </div>
+
+    <div id="contact-page" class="spa-page">
+        <button id="home-button" class="btn-hover color-1 home-button">Home</button>
+        <div class="content">
+            <!-- Contact page content here -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
