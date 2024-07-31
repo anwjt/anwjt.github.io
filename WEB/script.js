@@ -1,5 +1,5 @@
-// Initialize Typed.js
 document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Typed.js
     var options = {
         strings: ["a Web Developer", "a Graphic Designer", "a Content Creator"],
         typeSpeed: 50,
@@ -10,44 +10,53 @@ document.addEventListener("DOMContentLoaded", function() {
     };
     
     var typed = new Typed("#typed-text", options);
-    
+
+    // AJAX loading for pages
+    function loadPage(url, target) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(html => {
+                document.querySelector(target).innerHTML = html;
+            })
+            .catch(err => console.warn('Error loading page:', err));
+    }
+
     // Button click events for SPA navigation
-    document.querySelector(".btn-hover.color-1").addEventListener("click", function() {
-        document.querySelector("#home-page").classList.add("hidden");
-        document.querySelector("#work-page").classList.remove("hidden");
-        document.querySelector("#work-page").classList.add("active");
+    document.querySelectorAll(".btn-hover").forEach(button => {
+        button.addEventListener("click", function() {
+            const targetPage = document.querySelector(this.getAttribute("data-target"));
+
+            // Hide all pages and show the target page
+            document.querySelector("#home-page").classList.add("hidden");
+            document.querySelector("#profile-page").classList.add("hidden");
+            document.querySelector("#work-page").classList.add("hidden");
+            document.querySelector("#tiktok-page").classList.add("hidden");
+
+            targetPage.classList.remove("hidden");
+            targetPage.classList.add("active");
+
+            // Load page content via AJAX if not already loaded
+            if (!targetPage.querySelector(".content").innerHTML.trim()) {
+                const pageUrl = `spa${targetPage.id.split('-')[0]}.html`;
+                loadPage(pageUrl, `#${targetPage.id} .content`);
+            }
+        });
     });
 
-    document.querySelector(".btn-hover.color-2").addEventListener("click", function() {
-        document.querySelector("#home-page").classList.add("hidden");
-        document.querySelector("#tiktok-page").classList.remove("hidden");
-        document.querySelector("#tiktok-page").classList.add("active");
-    });
+    // Home button click events for returning to home page
+    document.querySelectorAll(".home-button").forEach(button => {
+        button.addEventListener("click", function() {
+            document.querySelector("#home-page").classList.remove("hidden");
+            document.querySelector("#home-page").classList.add("active");
 
-    document.querySelector(".btn-hover.color-3").addEventListener("click", function() {
-        document.querySelector("#home-page").classList.add("hidden");
-        document.querySelector("#contact-page").classList.remove("hidden");
-        document.querySelector("#contact-page").classList.add("active");
-    });
-
-    document.querySelector("#home-button").addEventListener("click", function() {
-        document.querySelector("#work-page").classList.add("hidden");
-        document.querySelector("#tiktok-page").classList.add("hidden");
-        document.querySelector("#contact-page").classList.add("hidden");
-        document.querySelector("#home-page").classList.remove("hidden");
-        document.querySelector("#home-page").classList.add("active");
-    });
-});
-
-$(document).ready(function() {
-    $('.btn-hover').click(function() {
-        var targetId = $(this).text().toLowerCase() + '-page';
-        $('.spa-page').removeClass('active').addClass('hidden');
-        $('#' + targetId).removeClass('hidden').addClass('active');
-    });
-
-    $('#home-button').click(function() {
-        $('.spa-page').removeClass('active').addClass('hidden');
-        $('#home-page').removeClass('hidden').addClass('active');
+            document.querySelector("#profile-page").classList.add("hidden");
+            document.querySelector("#work-page").classList.add("hidden");
+            document.querySelector("#tiktok-page").classList.add("hidden");
+        });
     });
 });
