@@ -187,3 +187,53 @@ body {
         font-size: 14px;
     }
 }
+/* Base styles for your pages */
+.spa-page {
+    display: none; /* Hide all pages by default */
+}
+
+.spa-page.active {
+    display: block; /* Show active page */
+}
+
+/* Styling for buttons */
+.btn-hover {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.color-1 { background-color: #4267B2; } /* Adjust colors as needed */
+.color-2 { background-color: #FF5722; }
+.color-3 { background-color: #4CAF50; }
+
+/* Styling for hero section */
+.hero-section {
+    text-align: center;
+}
+
+.text-container {
+    padding: 20px;
+}
+
+.description-text {
+    margin: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-hover {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Add additional styles as needed */
