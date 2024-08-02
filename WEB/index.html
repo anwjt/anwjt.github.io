@@ -3,52 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="home-page" class="spa-page active">
-        <div class="hero-section">
-            <div class="text-container">
-                <span class="static-text">I’m</span>
-                <span id="typed-text" class="bree-serif-regular"></span>
-                <div class="description-text">
-                    You can call me <span class="highlight">Anuwat</span>. I'm a Content Creator and Graphics Designer, but Coding a little bit.
+    <div class="container">
+        <h1 id="hello-text">HELLO</h1>
+        <div class="text-center">
+            <div class="main-text-container">
+                <p id="main-text">I'm</p>
+                <span id="typed-text"></span>
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="btn btn-custom" id="profile-btn" data-toggle="modal" data-target="#profileModal">Profile</button>
+            <button class="btn btn-custom" id="portfolio-btn" data-toggle="modal" data-target="#portfolioModal">Portfolio</button>
+            <button class="btn btn-custom" id="contact-btn" data-toggle="modal" data-target="#contactModal">Contact</button>
+           <button class="btn btn-custom mode-toggle" id="mode-toggle">
+                <i class="fa-solid fa-moon" id="moon-icon"></i>
+                <i class="fa-solid fa-sun d-none" id="sun-icon"></i>
+            </button>
+        </div>
+        <div class="caption">I’m a content creator, video editor, and can do a little web development.</div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-a4" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Profile Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="buttons">
-                    <button class="btn-hover color-1" data-target="#profile-page">Profile</button>
-                    <button class="btn-hover color-2" data-target="#work-page">Work</button>
-                    <button class="btn-hover color-3" data-target="#tiktok-page">Tiktok</button>
+                <div class="modal-body" id="profile-content">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <img src="https://img2.pic.in.th/pic/IMG_6397.jpeg"alt="Profile Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+                            <h2 id="profile-name">John Rocco</h2>
+                            <p id="profile-contact">123 Main St | +745564532 | john@company.in</p>
+                        </div>
+                        <div class="col-12">
+                            <h3>EDUCATION</h3>
+                            <p><strong>Harvard University</strong> | Cambridge, MA</p>
+                            <p>Bachelor of Arts in Computer Science</p>
+                            <p>Expected May 2025</p>
+                            <ul>
+                                <li>GPA: 3.8 / 4.0; SAT: 1480</li>
+                                <li>Honors: Dean's List</li>
+                                <li>Relevant Coursework: Data Structures, Algorithms, Web Development</li>
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                            <h3>WORK & LEADERSHIP EXPERIENCE</h3>
+                            <p><strong>Google</strong> | Mountain View, CA</p>
+                            <p>Software Engineering Intern, Engineering Team</p>
+                            <p>June 2023 – August 2023</p>
+                            <ul>
+                                <li>Developed features for Google Cloud Platform</li>
+                                <li>Worked on a project to enhance real-time data processing</li>
+                                <li>Contributed to code reviews and team meetings</li>
+                            </ul>
+                            <p><strong>Microsoft</strong> | Redmond, WA</p>
+                            <p>Software Engineering Intern, Azure Team</p>
+                            <p>June 2022 – August 2022</p>
+                            <ul>
+                                <li>Implemented new APIs for Azure cloud services</li>
+                                <li>Assisted in debugging and performance optimization</li>
+                                <li>Collaborated with team members on project planning</li>
+                            </ul>
+                            <p><strong>Harvard Tech Club</strong> | Cambridge, MA</p>
+                            <p>President</p>
+                            <p>September 2021 – May 2023</p>
+                            <ul>
+                                <li>Led a team of 20+ members in organizing tech talks and workshops</li>
+                                <li>Coordinated events with industry professionals</li>
+                                <li>Managed club finances and membership</li>
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                            <h3>SKILLS, ACTIVITIES & INTERESTS</h3>
+                            <p><strong>Languages:</strong> Fluent in English; Conversational Proficiency in Spanish</p>
+                            <p><strong>Technical Skills:</strong> JavaScript, Python, React, Node.js</p>
+                            <p><strong>Certifications & Training:</strong> Certified AWS Solutions Architect</p>
+                            <p><strong>Activities:</strong> Volunteer Developer for Nonprofits, Member of Hackathon Teams</p>
+                            <p><strong>Interests:</strong> Open-source projects, AI research, Digital Art</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-btn">Save as PDF</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="profile-page" class="spa-page hidden">
-        <div class="content">
-            <!-- Profile page content will be loaded here -->
-            <button class="home-button btn-hover color-1">Home</button>
+    <!-- Portfolio Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-a4" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalLabel">Portfolio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <p>No content yet</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="work-page" class="spa-page hidden">
-        <div class="content">
-            <!-- Work page content will be loaded here -->
-            <button class="home-button btn-hover color-1">Home</button>
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-a4" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">John Rocco</h4>
+                            <p class="card-text">
+                                <i class="fa fa-envelope"></i> email@example.com
+                            </p>
+                            <p class="card-text">
+                                <i class="fa fa-phone"></i> +745564532
+                            </p>
+                            <p class="card-text">
+                                <i class="fa fa-map-marker-alt"></i> 123 Main St, Anytown, USA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="contact-save-btn">Save Contact</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="tiktok-page" class="spa-page hidden">
-        <div class="content">
-            <!-- Tiktok page content will be loaded here -->
-            <button class="home-button btn-hover color-1">Home</button>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
+<script>
+document.getElementById('mode-toggle').addEventListener('click', function() {
+            const moonIcon = document.getElementById('moon-icon');
+            const sunIcon = document.getElementById('sun-icon');
+            moonIcon.classList.toggle('d-none');
+            sunIcon.classList.toggle('d-none');
+        });
+    </script>
 </body>
 </html>
