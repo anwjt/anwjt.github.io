@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+        }
+        button#saveBtn {
+            background-color: #008CBA;
+            color: white;
+            display: none;
+        }
+        #qrcode {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        #qrLink {
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+        #qrLink a {
+            color: #008CBA;
+            text-decoration: none;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <form id="qrForm">
+        <label for="qrData">Enter data to encode:</label>
+        <input type="text" id="qrData" required placeholder="Enter text or URL">
+        
+        <button type="submit">Generate QR Code</button>
+        <button id="saveBtn">Save as PNG</button>
+    </form>
+    <div id="qrcode"></div>
+    <div id="qrLink">
+        <p>Shareable Link:</p>
+        <a id="qrLinkAnchor" href="" target="_blank"></a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        const form = document.getElementById('qrForm');
+        const qrData = document.getElementById('qrData');
+        const qrCodeContainer = document.getElementById('qrcode');
+        const qrLinkContainer = document.getElementById('qrLink');
+        const qrLinkAnchor = document.getElementById('qrLinkAnchor');
+        const saveBtn = document.getElementById('saveBtn');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            qrCodeContainer.innerHTML = '';
+            qrLinkContainer.style.display = 'none';
+            saveBtn.style.display = 'none';
+
+            const qrText = qrData.value;
+            const qrCode = new QRCode(qrCodeContainer, {
+                text: qrText,
+                width: 200,
+                height: 200
+            });
+
+            saveBtn.style.display = 'block';
+
+            qrLinkAnchor.href = `${window.location.href}?data=${encodeURIComponent(qrText)}`;
+            qrLinkAnchor.textContent = qrLinkAnchor.href;
+            qrLinkContainer.style.display = 'block';
+
+            saveBtn.onclick = function() {
+                const canvas = qrCodeContainer.querySelector('canvas');
+                const imgData = canvas.toDataURL("image/png");
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'qrcode.png';
+                link.click();
+            };
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const dataParam = urlParams.get('data');
+        if (dataParam) {
+            qrData.value = decodeURIComponent(dataParam);
+            form.dispatchEvent(new Event('submit'));
+        }
+    </script>
+</body>
+</html>
