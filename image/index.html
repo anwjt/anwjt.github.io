@@ -3,61 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Converter and Compressor</title>
+    <title>Image Converter & Compressor</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- File Selection -->
-    <h1>Image Converter and Compressor</h1>
-    <input type="file" id="imageInput" multiple>
-    <button id="selectButton">Select Images</button>
-
-    <!-- Action Buttons -->
-    <div id="actionButtons" style="display: none;">
-        <button id="convertButton">Convert Images</button>
-        <button id="compressButton">Compress Images</button>
-    </div>
-
-    <!-- Convert Modal -->
-    <div id="convertModal" class="modal">
-        <div class="modal-content">
-            <span id="convertClose" class="close">&times;</span>
-            <h2>Convert Images</h2>
-            <div id="conversionOptions">
-                <label for="conversionType">Select Conversion Type:</label>
-                <select id="conversionType">
-                    <option value="">--Select Type--</option>
-                    <option value="png">PNG</option>
-                    <option value="jpeg">JPEG</option>
-                    <option value="webp">WEBP</option>
-                </select>
-                <button id="convertConfirmButton">Convert</button>
-            </div>
-            <div id="convertResult"></div>
-            <button id="convertSaveAllButton">Save All as ZIP</button>
+<div class="container mt-5">
+    <h1 class="text-center">Image Converter & Compressor</h1>
+    
+    <div class="row mt-4">
+        <div class="col text-center">
+            <button id="selectButton" class="btn btn-primary">Select Images</button>
+            <input type="file" id="imageInput" class="d-none" multiple>
         </div>
     </div>
 
-    <!-- Compress Modal -->
-    <div id="compressModal" class="modal">
-        <div class="modal-content">
-            <span id="compressClose" class="close">&times;</span>
-            <h2>Compress Images</h2>
-            <div id="compressionOptions">
-                <label for="size">Max File Size (MB):</label>
-                <input type="number" id="size" min="0.1" step="0.1">
-                <button id="compressConfirmButton">Compress</button>
-            </div>
-            <div id="compressResult"></div>
-            <button id="compressSaveAllButton">Save All as ZIP</button>
+    <div id="actionButtons" class="row mt-4 justify-content-center d-none">
+        <div class="col-md-6 text-center">
+            <button id="convertButton" class="btn btn-success btn-lg mb-2">Convert Images</button>
+        </div>
+        <div class="col-md-6 text-center">
+            <button id="compressButton" class="btn btn-warning btn-lg mb-2">Compress Images</button>
         </div>
     </div>
 
-    <!-- JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@1.0.17/dist/browser-image-compression.min.js"></script>
-    <script src="script.js"></script>
+    <!-- Conversion Options -->
+    <div id="conversionOptions" class="row mt-4 d-none">
+        <div class="col text-center">
+            <label for="conversionType" class="form-label">Choose Conversion Type:</label>
+            <select id="conversionType" class="form-control">
+                <option value="jpeg">JPEG</option>
+                <option value="png">PNG</option>
+                <option value="webp">WEBP</option>
+            </select>
+            <button id="convertConfirmButton" class="btn btn-primary mt-3">Convert</button>
+        </div>
+    </div>
 
+    <!-- Compression Options -->
+    <div id="compressionOptions" class="row mt-4 d-none">
+        <div class="col text-center">
+            <label for="size" class="form-label">Max File Size (MB):</label>
+            <input type="number" id="size" class="form-control" min="0.1" step="0.1">
+            <button id="compressConfirmButton" class="btn btn-primary mt-3">Compress</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="convertModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Conversion Results</h5>
+                    <button type="button" class="close" id="convertClose">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="convertResult">
+                    <!-- Conversion results will appear here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveAllButton">Save All as ZIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="compressModal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Compression Results</h5>
+                    <button type="button" class="close" id="compressClose">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="compressResult">
+                    <!-- Compression results will appear here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="saveAllButtonCompress">Save All as ZIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
