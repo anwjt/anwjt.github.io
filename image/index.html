@@ -1,156 +1,115 @@
-let filesToSave = []; // Array to hold file URLs and names
-
-document.getElementById('selectButton').addEventListener('click', function() {
-    const fileInput = document.getElementById('imageInput');
-    if (fileInput.files.length === 0) {
-        alert('Please select images first.');
-        return;
-    }
-    document.getElementById('actionButtons').style.display = 'block';
-});
-
-document.getElementById('convertButton').addEventListener('click', function() {
-    document.getElementById('conversionOptions').style.display = 'block';
-    document.getElementById('compressionOptions').style.display = 'none';
-});
-
-document.getElementById('compressButton').addEventListener('click', function() {
-    document.getElementById('compressionOptions').style.display = 'block';
-    document.getElementById('conversionOptions').style.display = 'none';
-});
-
-document.getElementById('convertConfirmButton').addEventListener('click', function() {
-    const files = document.getElementById('imageInput').files;
-    const conversionType = document.getElementById('conversionType').value;
-
-    if (files.length === 0 || !conversionType) return;
-
-    filesToSave = []; // Clear previous files to save
-    document.getElementById('convertResult').innerHTML = ''; // Clear previous results
-    $('#convertModal').modal('show'); // Show the convert modal
-
-    Array.from(files).forEach((file) => {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-                canvas.toBlob(function(blob) {
-                    const fileSize = (blob.size / 1024 / 1024).toFixed(2);
-                    const fileName = `converted-${file.name.split('.')[0]}.${conversionType}`;
-                    
-                    // Add file blob to filesToSave array
-                    filesToSave.push({ blob, fileName });
-
-                    // Append file info
-                    document.getElementById('convertResult').innerHTML += `<p>File Name: ${fileName}</p><p>File Size: ${fileSize} MB</p>`;
-                }, `image/${conversionType}`);
-            };
-            img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    });
-
-    document.getElementById('conversionOptions').style.display = 'none'; // Hide options after conversion
-});
-
-document.getElementById('compressConfirmButton').addEventListener('click', async function() {
-    const files = document.getElementById('imageInput').files;
-    const maxSizeMB = parseFloat(document.getElementById('size').value);
-    const quality = 0.8;
-
-    if (files.length === 0 || isNaN(maxSizeMB)) return;
-
-    filesToSave = []; // Clear previous files to save
-    document.getElementById('compressResult').innerHTML = ''; // Clear previous results
-    $('#compressModal').modal('show'); // Show the compress modal
-
-    for (const file of files) {
-        try {
-            const compressedFile = await imageCompression(file, {
-                maxSizeMB: maxSizeMB,
-                useWebWorker: true,
-                maxWidthOrHeight: 1920,
-                initialQuality: quality
-            });
-
-            const fileSize = (compressedFile.size / 1024 / 1024).toFixed(2);
-            const fileName = `compressed-${file.name}`;
-
-            // Append file info
-            document.getElementById('compressResult').innerHTML += `<p>File Name: ${fileName}</p><p>File Size: ${fileSize} MB</p>`;
-
-            // Add compressed file to filesToSave array
-            filesToSave.push({ blob: compressedFile, fileName });
-        } catch (error) {
-            console.error('Compression failed:', error);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter and Resizer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        .file-list p {
+            margin: 0;
+            padding: 0;
+            line-height: 1.5; /* Adjust line height for better readability */
         }
-    }
+        .modal-content {
+            padding: 20px;
+            border: 1px solid #888;
+            position: relative;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Image Converter and Resizer</h1>
+        <form id="imageForm">
+            <div class="form-group">
+                <input type="file" id="imageInput" name="image" accept="image/*" multiple required>
+                <button type="button" id="selectButton" class="btn btn-primary mt-2">Select Images</button>
+            </div>
+        </form>
 
-    document.getElementById('compressionOptions').style.display = 'none'; // Hide options after compression
-});
+        <div id="actionButtons" class="mt-4" style="display: none;">
+            <button type="button" id="convertButton" class="btn btn-secondary">Convert Images</button>
+            <button type="button" id="compressButton" class="btn btn-secondary">Reduce File Size</button>
+        </div>
 
-function getDateString() {
-    const now = new Date();
-    const day = ('0' + now.getDate()).slice(-2);
-    const month = ('0' + (now.getMonth() + 1)).slice(-2); // Months are zero-based
-    const year = now.getFullYear();
-    return `${day}-${month}-${year}`;
-}
+        <div id="conversionOptions" style="display: none;">
+            <div class="form-group mt-4">
+                <label for="conversionType">Conversion Type:</label>
+                <select id="conversionType" class="form-control">
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                    <option value="gif">GIF</option>
+                    <option value="webp">WEBP</option>
+                </select>
+            </div>
+            <button type="button" id="convertConfirmButton" class="btn btn-primary">Convert Now</button>
+        </div>
 
-document.getElementById('saveAllButton').addEventListener('click', function() {
-    if (filesToSave.length === 0) {
-        alert('No files to save.');
-        return;
-    }
+        <div id="compressionOptions" style="display: none;">
+            <div class="form-group mt-4">
+                <label for="size">Max File Size (MB):</label>
+                <select id="size" class="form-control">
+                    <option value="1">1 MB</option>
+                    <option value="2">2 MB</option>
+                    <option value="5">5 MB</option>
+                    <option value="10">10 MB</option>
+                </select>
+            </div>
+            <button type="button" id="compressConfirmButton" class="btn btn-primary">Reduce Now</button>
+        </div>
+    </div>
 
-    const zip = new JSZip();
-    filesToSave.forEach(file => {
-        zip.file(file.fileName, file.blob);
-    });
+    <!-- Modal for conversion -->
+    <div id="convertModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Converted Images</h5>
+                    <button type="button" class="close" id="convertClose" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="convertResult" class="file-list modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" id="saveAllButton" class="btn btn-primary">Save All as ZIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    const fileName = `Converse - ${getDateString()} (${filesToSave.length} files).zip`;
+    <!-- Modal for compression -->
+    <div id="compressModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Compressed Images</h5>
+                    <button type="button" class="close" id="compressClose" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="compressResult" class="file-list modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" id="saveCompressButton" class="btn btn-primary">Save All as ZIP</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    zip.generateAsync({ type: 'blob' })
-        .then(function(content) {
-            saveAs(content, fileName);
-        })
-        .catch(function(err) {
-            console.error('Error generating ZIP:', err);
-        });
-});
-
-document.getElementById('saveCompressButton').addEventListener('click', function() {
-    if (filesToSave.length === 0) {
-        alert('No files to save.');
-        return;
-    }
-
-    const zip = new JSZip();
-    filesToSave.forEach(file => {
-        zip.file(file.fileName, file.blob);
-    });
-
-    const fileName = `Reduce Files - ${getDateString()} (${filesToSave.length} files).zip`;
-
-    zip.generateAsync({ type: 'blob' })
-        .then(function(content) {
-            saveAs(content, fileName);
-        })
-        .catch(function(err) {
-            console.error('Error generating ZIP:', err);
-        });
-});
-
-document.getElementById('convertClose').addEventListener('click', function() {
-    document.getElementById('convertResult').innerHTML = ''; // Clear results when modal is closed
-});
-
-document.getElementById('compressClose').addEventListener('click', function() {
-    document.getElementById('compressResult').innerHTML = ''; // Clear results when modal is closed
-});
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/browser-image-compression/1.0.14/browser-image-compression.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
