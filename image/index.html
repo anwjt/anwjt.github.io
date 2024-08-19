@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
         .file-list p {
             margin: 0;
@@ -26,6 +25,28 @@
             border-top: none;
             justify-content: center;
         }
+        .btn-custom {
+            background-color: #007bff; /* Bootstrap's primary color */
+            border-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            border-color: #0056b3;
+            transform: scale(1.05); /* Slightly increase button size */
+        }
+        .btn-custom:active {
+            background-color: #004085; /* Even darker shade on click */
+            border-color: #004085;
+            transform: scale(0.95); /* Slightly decrease button size */
+        }
+        .btn-custom:focus {
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); /* Focus ring */
+        }
     </style>
 </head>
 <body>
@@ -34,13 +55,13 @@
         <form id="imageForm">
             <div class="form-group">
                 <input type="file" id="imageInput" name="image" accept="image/*" multiple required>
-                <button type="button" id="selectButton" class="btn btn-primary mt-2">Select Images</button>
+                <button type="button" id="selectButton" class="btn btn-custom mt-2">Select Images</button>
             </div>
         </form>
 
         <div id="actionButtons" class="mt-4" style="display: none;">
-            <button type="button" id="convertButton" class="btn btn-secondary">Convert Images</button>
-            <button type="button" id="compressButton" class="btn btn-secondary">Reduce File Size</button>
+            <button type="button" id="convertButton" class="btn btn-custom">Convert Images</button>
+            <button type="button" id="compressButton" class="btn btn-custom">Reduce File Size</button>
         </div>
 
         <div id="conversionOptions" style="display: none;">
@@ -53,7 +74,7 @@
                     <option value="webp">WEBP</option>
                 </select>
             </div>
-            <button type="button" id="convertConfirmButton" class="btn btn-primary">Convert Now</button>
+            <button type="button" id="convertConfirmButton" class="btn btn-custom">Convert Now</button>
         </div>
 
         <div id="compressionOptions" style="display: none;">
@@ -66,7 +87,7 @@
                     <option value="10">10 MB</option>
                 </select>
             </div>
-            <button type="button" id="compressConfirmButton" class="btn btn-primary">Reduce Now</button>
+            <button type="button" id="compressConfirmButton" class="btn btn-custom">Reduce Now</button>
         </div>
     </div>
 
@@ -82,7 +103,7 @@
                 </div>
                 <div id="convertResult" class="file-list modal-body"></div>
                 <div class="modal-footer">
-                    <button type="button" id="saveAllButton" class="btn btn-primary">Save All as ZIP</button>
+                    <button type="button" id="saveAllButton" class="btn btn-custom">Save All as ZIP</button>
                 </div>
             </div>
         </div>
@@ -100,7 +121,7 @@
                 </div>
                 <div id="compressResult" class="file-list modal-body"></div>
                 <div class="modal-footer">
-                    <button type="button" id="saveCompressButton" class="btn btn-primary">Save All as ZIP</button>
+                    <button type="button" id="saveAllButton" class="btn btn-custom">Save All as ZIP</button>
                 </div>
             </div>
         </div>
