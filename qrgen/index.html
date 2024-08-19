@@ -58,6 +58,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+        .custom-qr {
+            background-color: #ffffff; /* Background color for the QR code */
+            padding: 10px;
+            border-radius: 12px; /* Rounded edges */
+        }
         #qrLink {
             margin-top: 20px;
             display: none;
@@ -106,7 +111,41 @@
                 height: 200
             });
 
-            saveBtn.style.display = 'block';
+            setTimeout(() => {
+                const canvas = qrCodeContainer.querySelector('canvas');
+                const context = canvas.getContext('2d');
+
+                // Draw the background and rounded edges
+                const roundedCanvas = document.createElement('canvas');
+                const roundedContext = roundedCanvas.getContext('2d');
+                roundedCanvas.width = canvas.width + 20;
+                roundedCanvas.height = canvas.height + 20;
+
+                // Rounded rectangle
+                roundedContext.fillStyle = '#ffffff'; // Background color
+                roundedContext.beginPath();
+                const radius = 12;
+                roundedContext.moveTo(radius, 0);
+                roundedContext.lineTo(roundedCanvas.width - radius, 0);
+                roundedContext.quadraticCurveTo(roundedCanvas.width, 0, roundedCanvas.width, radius);
+                roundedContext.lineTo(roundedCanvas.width, roundedCanvas.height - radius);
+                roundedContext.quadraticCurveTo(roundedCanvas.width, roundedCanvas.height, roundedCanvas.width - radius, roundedCanvas.height);
+                roundedContext.lineTo(radius, roundedCanvas.height);
+                roundedContext.quadraticCurveTo(0, roundedCanvas.height, 0, roundedCanvas.height - radius);
+                roundedContext.lineTo(0, radius);
+                roundedContext.quadraticCurveTo(0, 0, radius, 0);
+                roundedContext.closePath();
+                roundedContext.fill();
+
+                // Draw the QR code on top of the background
+                roundedContext.drawImage(canvas, 10, 10);
+
+                // Replace the original canvas with the rounded one
+                qrCodeContainer.innerHTML = '';
+                qrCodeContainer.appendChild(roundedCanvas);
+
+                saveBtn.style.display = 'block';
+            }, 300);
 
             qrLinkAnchor.href = `${window.location.href}?data=${encodeURIComponent(qrText)}`;
             qrLinkAnchor.textContent = qrLinkAnchor.href;
