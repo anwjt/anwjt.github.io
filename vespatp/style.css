@@ -1,0 +1,159 @@
+#thumbnailContainer {
+    margin-top: 20px;
+}
+
+/* Styles for the Image Preview Modal */
+#imagePreviewModal .modal-content {
+    background-color: white; /* White background for image preview */
+    border-radius: 8px; /* Optional: Round corners for the modal */
+}
+
+#imagePreviewModal .modal-header,
+#imagePreviewModal .modal-footer {
+    border: none; /* Remove borders for a cleaner look */
+}
+
+/* Update modal styles for preview image */
+.modal-body img {
+    max-width: 90%;
+    max-height: 80vh;
+    height: auto;
+    width: auto;
+}
+
+/* Card styles for thumbnails */
+.card {
+    width: 250px; /* Adjust card width */
+    margin: 10px;
+    display: inline-block;
+    transition: transform 0.2s; /* Add transition for hover effect */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale up card slightly on hover */
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center; /* Center text in card */
+}
+
+/* Notification styles */
+.notification-modal .modal-content {
+    border: none;
+    background: transparent; /* Keep notification modal transparent */
+}
+
+.notification-modal .modal-body {
+    padding: 0;
+}
+
+.notification-modal .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Center the modal vertically */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white; /* Change color if necessary */
+    font-size: 30px;
+}
+
+/* Add motion effects for Material Design */
+.mdc-button {
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.mdc-button:hover {
+    transform: translateY(-2px); /* Slightly lift button on hover */
+}
+
+.mdc-button:active {
+    transform: translateY(1px); /* Push down on click */
+}
+
+/* Update button colors for pastel effect */
+.mdc-button--raised {
+    background-color: #FFABAB; /* Light pastel red */
+    color: #FFFFFF; /* White text */
+}
+
+.mdc-button--raised:hover {
+    background-color: #FF7F7F; /* Slightly darker on hover */
+}
+
+.mdc-button--danger {
+    background-color: #FF6F61; /* Light pastel coral */
+}
+
+.mdc-button--danger:hover {
+    background-color: #FF4D4D; /* Darker coral on hover */
+}
+
+.mdc-button--success {
+    background-color: #88E1C1; /* Light pastel green */
+}
+
+.mdc-button--success:hover {
+    background-color: #68D1A6; /* Darker green on hover */
+}
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Make sure it is on top */
+}
+/* Sticky Footer Styles */
+body, html {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Updated Sticky Footer Styles */
+.footer {
+    background-color:#3FD4B0 ; /* Pastel background color */
+    color: #ffffff; /* White text for contrast */
+    padding: 15px 0;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ffffff; /* White link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+.intro {
+    color : #3FD4B0;
+    font-size: 30px;
+}
